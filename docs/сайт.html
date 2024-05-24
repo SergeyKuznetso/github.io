@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Перемешанный плейлист видео</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+.playlist {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 1rem;
+}
+.video {
+width: 100%;
+max-width: 300px;
+}
+@media (min-width: 768px) {
+.video {
+width: calc(33.33% - 1rem);
+}
+}
+button {
+display: block;
+margin: 1rem auto;
+padding: 0.5rem 1rem;
+font-size: 1rem;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+</style>
+<script>
+function shufflePlaylist() {
+const videos = document.querySelectorAll('.video');
+const shuffledVideos = [...videos].sort(() => Math.random() - 0.5);
+videos.forEach((video, index) => {
+video.parentNode.insertBefore(shuffledVideos[index], video.nextSibling);
+});
+}
+
+const shuffleButton = document.createElement('button');
+shuffleButton.textContent = 'Перемешать видео';
+shuffleButton.addEventListener('click', shufflePlaylist);
+document.body.appendChild(shuffleButton);
+
+window.onload = shufflePlaylist;
+</script>
+</head>
+<body>
+<div class="playlist">
+<div class="video">
+<iframe src="https://www.youtube.com/embed/RzBVD7YBOZs?list=PLbxpZRxy6lo9a4cjdd5z4k6fgbkT9_E9j" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/JMKh5_AtAOs?list=PLbxpZRxy6lo9a4cjdd5z4k6fgbkT9_E9j" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/TSul1psnkqc?list=PLbxpZRxy6lo9a4cjdd5z4k6fgbkT9_E9j" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/WmVLhaup4-I?list=PLbxpZRxy6lo9a4cjdd5z4k6fgbkT9_E9j" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/GBdPL0jz7HQ?list=PLbxpZRxy6lo9a4cjdd5z4k6fgbkT9_E9j" frameborder="0" allowfullscreen></iframe>
+</div>
+<!-- Добавьте остальные видео в плейлист -->
+</div>
+</body>
+</html>
